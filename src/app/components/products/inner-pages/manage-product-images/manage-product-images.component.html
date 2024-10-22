@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>Manage Product Images</h2>
+<form [formGroup]="form" (ngSubmit)="uploadFile()">
+  <mat-dialog-content class="mat-typography">
+
+    <div class="col-span-12">
+      <div class="sm:col-span-4">
+        <label for="file" class="block text-sm font-medium leading-6 text-gray-900">Product Image</label>
+        <input (change)="onFileSelected($event)" id="file" name="file" type="file"
+               formControlName="image"
+               class="block w-full text-black border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10
+               focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50
+               disabled:pointer-events-none
+    file:bg-gray-200
+    file:border-0
+    file:me-4
+    file:py-3 file:px-4">
+
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button cdkFocusInitial [disabled]="loading || form.invalid">Upload Image</button>
+  </mat-dialog-actions>
+</form>
+<hr>
+<div class="my-5 mx-5 ">
+  <h3 class="text-xl font-semibold">Product Images</h3>
+  <div class="overflow-x-auto">
+    <div class="grid grid-flow-col auto-cols-max gap-4">
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full justify-center items-center flex flex-col object-cover">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image0" alt="">
+      </div>
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full object-fill justify-center flex flex-col items-center">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image1" alt="">
+      </div>
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full object-fill justify-center flex flex-col items-center">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image2" alt="">
+      </div>
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full object-fill justify-center flex flex-col items-center">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image3" alt="">
+      </div>
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full object-fill justify-center flex flex-col items-center">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image4" alt="">
+      </div>
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full object-fill justify-center flex flex-col items-center">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image5" alt="">
+      </div>
+      <div
+        class="border-2 rounded-md border-gray-300 w-full h-full object-fill justify-center flex flex-col items-center">
+        <img src="https://static.thenounproject.com/png/3407390-200.png" id="image6" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+

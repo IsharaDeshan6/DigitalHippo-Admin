@@ -1,0 +1,59 @@
+import {Component, inject} from '@angular/core';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle
+} from "@angular/material/dialog";
+import {MatButton} from "@angular/material/button";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {ProductService} from "../../../../service/product/product.service";
+
+@Component({
+  selector: 'app-new-product',
+  standalone: true,
+  imports: [
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatButton,
+    MatDialogTitle,
+    ReactiveFormsModule
+  ],
+  templateUrl: './new-product.component.html',
+  styleUrl: './new-product.component.css'
+})
+export class NewProductComponent {
+
+  readonly dialogRef = inject(MatDialogRef<NewProductComponent>);
+  readonly productService = inject(ProductService);
+
+  form = new FormGroup({
+    qty: new FormControl('', [Validators.required]),
+    unitPrice: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required])
+
+  });
+
+  create() {
+
+    const obj: any = {
+      qty: this.form.value.qty,
+      unitPrice: this.form.value.unitPrice,
+      description: this.form.value.description
+    }
+
+    this.productService.create(obj).subscribe(response => {
+    this.dialogRef.close(true);
+
+    }, error => {
+      console.log(error?.error?.message);
+    });
+  }
+
+  close() {
+    this.dialogRef.close(false);
+  }
+
+}
